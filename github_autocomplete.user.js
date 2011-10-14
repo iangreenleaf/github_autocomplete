@@ -10,9 +10,14 @@ $(".comment-form").keyup(function(event) {
   if (lastWord[0] != "@" || lastWord.length < 5) return;
   var search = lastWord.slice(1);
   $.get(
-    "https://github.com/api/v2/json/user/search/" + search,
+    "https://github.com/autocomplete/users?q=" + search + "&limit=10",
     function(data) {
-      console.log(data);
+      $.each(data.split("\n"), function(i,str) {
+        username = str.split(" ")[0];
+        gravatar = str.split(" ")[1];
+        console.log(username);
+        console.log(gravatar);
+      });
     }
-    );
+  );
 });
