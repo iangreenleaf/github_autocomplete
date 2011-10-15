@@ -15,7 +15,7 @@ var getAutocompleteResults = function() {
 
 $(".comment-form").keyup(function(event) {
   var lastWord = $(event.target).val().split(/ |\n/).pop();
-  if (lastWord[0] != "@" || lastWord.length < 5) {
+  if (lastWord[0] != "@" || lastWord.length < 4) {
       getAutocompleteResults().empty();
       return;
   }
