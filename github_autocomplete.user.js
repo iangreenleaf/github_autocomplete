@@ -3,7 +3,6 @@
 // @namespace      iangreenleaf.com
 // @description    Autocompletion for @-mentions on GitHub
 // @include        https://github.com/*
-// @match          https://github.com/*
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
 // ==/UserScript==
 
