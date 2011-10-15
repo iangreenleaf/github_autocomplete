@@ -10,5 +10,6 @@
   ],
   "permissions": [
     "https://github.com/*"
-  ]
+  ],
+  "update_url": "https://github.com/iangreenleaf/github_autocomplete/raw/crx_publish/updates.xml"
 }
