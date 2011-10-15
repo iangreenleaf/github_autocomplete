@@ -40,6 +40,11 @@ $(".comment-form textarea").keydown(function(e) {
     autocompleteSelected($(items.first()).text(), box);
     return false;
   }
+});
+
+$(".comment-form textarea").keyup(function(e) {
+  var activeField = $(this);
+  var box = getAutocompleteResults(activeField);
 
   var lastWord = $(e.target).val().split(/ |\n/).pop();
   if (lastWord[0] != "@" || lastWord.length < 4) {
