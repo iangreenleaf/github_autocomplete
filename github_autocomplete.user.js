@@ -14,6 +14,7 @@ var getAutocompleteResults = function() {
 }
 
 $(".comment-form").keyup(function(event) {
+  var activeForm = $(this);
   var lastWord = $(event.target).val().split(/ |\n/).pop();
   if (lastWord[0] != "@" || lastWord.length < 4) {
       getAutocompleteResults().empty();
@@ -30,7 +31,7 @@ $(".comment-form").keyup(function(event) {
         gravatar = str.split(" ")[1];
         box.append($("<li>" + username + "</li>"));
       });
-      $(".comment-form").after(box);
+      activeForm.after(box);
     }
   );
 });
