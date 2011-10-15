@@ -17,7 +17,7 @@ var getAutocompleteResults = function(forTextField) {
 var autocompleteSelected = function(username, textfield) {
   var text = textfield.val();
   var start = text.lastIndexOf("@");
-  textfield.val(text.substr(0, start + 1) + username);
+  textfield.val(text.substr(0, start + 1) + username + " ");
 }
 
 $("#user_autocomplete_results li").live("click", function() {
