@@ -31,6 +31,9 @@ $("#user_autocomplete_results li").live("click", function() {
 $("#user_autocomplete_results li").live("mouseenter", function() { $(this).addClass("ac_over"); });
 $("#user_autocomplete_results li").live("mouseleave", function() { $(this).removeClass("ac_over"); });
 
+$("#user_autocomplete_results").live("mouseenter", function() { $($("li", this).first()).removeClass("ac_over"); });
+$("#user_autocomplete_results").live("mouseleave", function() { $($("li", this).first()).addClass("ac_over"); });
+
 $(".comment-form textarea").keydown(function(e) {
   var activeField = $(this);
   var box = getAutocompleteResults(activeField);
@@ -68,6 +71,7 @@ $(".comment-form textarea").keyup(function(e) {
         box.append(item);
       });
       activeField.after(box);
+      box.trigger("mouseleave");
     }
   );
 });
