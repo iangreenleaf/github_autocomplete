@@ -14,10 +14,17 @@ var getAutocompleteResults = function(forTextField) {
   return results;
 }
 
+var autocompleteSelected = function(username, textfield) {
+  var text = textfield.val();
+  var start = text.lastIndexOf("@");
+  textfield.val(text.substr(0, start + 1) + username);
+}
+
 $("#user_autocomplete_results li").live("click", function() {
   var username = $(this).text();
-  console.log(username);
-  console.log($(this).parent().data("activeFormId"));
+  var box = $(this).parent();
+  autocompleteSelected(username, $("#" + box.data("activeFormId")));
+  box.empty();
 });
 
 $(".comment-form textarea").keyup(function(event) {
