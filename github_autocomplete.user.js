@@ -14,7 +14,8 @@ var getAutocompleteResults = function(forTextField) {
   return results;
 }
 
-var autocompleteSelected = function(username, textfield) {
+var autocompleteSelected = function(username, sender) {
+  var textfield = $("#" + sender.data("activeFormId"));
   var text = textfield.val();
   var start = text.lastIndexOf("@");
   textfield.val(text.substr(0, start + 1) + username + " ");
@@ -23,22 +24,33 @@ var autocompleteSelected = function(username, textfield) {
 $("#user_autocomplete_results li").live("click", function() {
   var username = $(this).text();
   var box = $(this).parent();
-  autocompleteSelected(username, $("#" + box.data("activeFormId")));
+  autocompleteSelected(username, box);
   box.empty();
 });
 
-$(".comment-form textarea").keyup(function(event) {
+$(".comment-form textarea").keydown(function(e) {
   var activeField = $(this);
-  var lastWord = $(event.target).val().split(/ |\n/).pop();
+  var box = getAutocompleteResults(activeField);
+
+  if (
+    (e.keyCode == 13 || e.keyCode == 9)
+    && (items = $("li", box)).length > 0
+  ) {
+    e.preventDefault();
+    autocompleteSelected($(items.first()).text(), box);
+    return false;
+  }
+
+  var lastWord = $(e.target).val().split(/ |\n/).pop();
   if (lastWord[0] != "@" || lastWord.length < 4) {
-      getAutocompleteResults(activeField).empty();
+      box.empty();
       return;
   }
+
   var search = lastWord.slice(1);
   $.get(
     "https://github.com/autocomplete/users?q=" + search + "&limit=10",
     function(data) {
-      var box = getAutocompleteResults(activeField);
       box.empty();
       $.each(data.split("\n"), function(i,str) {
         username = str.split(" ")[0];
