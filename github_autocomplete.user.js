@@ -53,7 +53,7 @@ $(".comment-form textarea").keyup(function(e) {
   var box = getAutocompleteResults(activeField);
 
   var lastWord = $(e.target).val().split(/ |\n/).pop();
-  if (lastWord[0] != "@" || lastWord.length < 4) {
+  if (lastWord[0] != "@" || lastWord.length < 3) {
       box.empty();
       return;
   }
