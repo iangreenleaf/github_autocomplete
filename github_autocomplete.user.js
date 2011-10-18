@@ -63,6 +63,7 @@ $(".comment-form textarea").keyup(function(e) {
   $.get(
     "https://github.com/autocomplete/users?q=" + search + "&limit=10",
     function(data) {
+      var box = getAutocompleteResults(activeField);
       box.empty();
       $.each(data.split("\n"), function(i,str) {
         username = str.split(" ")[0];
