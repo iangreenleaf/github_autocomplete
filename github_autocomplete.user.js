@@ -20,6 +20,7 @@ var autocompleteSelected = function(username, sender) {
   var text = textfield.val();
   var start = text.lastIndexOf("@");
   textfield.val(text.substr(0, start + 1) + username + " ");
+  textfield[0].focus();
   sender.empty();
 }
 
