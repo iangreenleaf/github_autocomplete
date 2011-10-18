@@ -20,13 +20,13 @@ var autocompleteSelected = function(username, sender) {
   var text = textfield.val();
   var start = text.lastIndexOf("@");
   textfield.val(text.substr(0, start + 1) + username + " ");
+  sender.empty();
 }
 
 $("#user_autocomplete_results li").live("click", function() {
   var username = $(this).text();
   var box = $(this).parent();
   autocompleteSelected(username, box);
-  box.empty();
 });
 
 $("#user_autocomplete_results li").live("mouseenter", function() { $(this).addClass("ac_over"); });
