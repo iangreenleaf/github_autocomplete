@@ -1,6 +1,6 @@
 {
   "name": "GitHub Autocomplete",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Autocompletion for @-mentions on GitHub",
   "content_scripts": [
     {
