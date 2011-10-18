@@ -19,8 +19,10 @@ var autocompleteSelected = function(username, sender) {
   var textfield = $("#" + sender.data("activeFormId"));
   var text = textfield.val();
   var start = text.lastIndexOf("@");
-  textfield.val(text.substr(0, start + 1) + username + " ");
+  var newText = text.substr(0, start + 1) + username + " ";
+  textfield.val(newText);
   textfield[0].focus();
+  textfield[0].setSelectionRange(newText.length,newText.length);
   sender.empty();
 }
 
